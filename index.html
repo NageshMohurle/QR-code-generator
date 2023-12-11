@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: yellow;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 70vw;
+            height: 60vh;
+            margin:50px;
+            background-color: #fff;
+            border-radius: 10px;
+            border: 1px solid black;
+            padding: 20px;
+        }
+
+        button {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: blue;
+            color: white;
+            height: 30px;
+            border-radius: 5px;
+        }
+
+        #url {
+            width: 50vw;
+            height: 4vh;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+</script>
+
+<body>
+    <div id="container">
+        <h2>Enter URL:</h2>
+        <input type="url" id="url">
+        <button onclick="GenerateQRCode()">Generate QR code</button>
+        <div id="QRCode"></div>
+    </div>
+    <script>
+        function GenerateQRCode() {
+            let url = document.getElementById('url').value
+            console.log(url)
+            let qrCodeDiv = document.getElementById('QRCode')
+
+            //clear previous qr code
+
+            let qrcode = new QRCode(qrCodeDiv, {
+                text: url,
+                width: 228,
+                height: 228,
+                colorDark: "#000000",
+            })
+        }
+    </script>
+</body>
+
+</html>
